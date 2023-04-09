@@ -5,16 +5,30 @@
 //   console.log(erro);
 // });
 
+//Função para gerar numeros aleatórios
+function getRandomIntInclusive(min: number, max: number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//FUNÇÃO PARA AGUARDAR O PROCESSO
+const timer = (seconds: number) => {
+  let time = seconds * 1000;
+  return new Promise((res) => setTimeout(res, time));
+};
+
 async function SendMessage(client: any, message: string) {
-  for (let index = 1000; index <= 1999; index++) {
+  for (let index = 1000; index <= 1100; index++) {
     await client
-      .sendImage(`55161699634${index}@c.us`, "image/iptv.jpg", "iptv", message)
+      .sendImage(`55161699632${index}@c.us`, "image/iptv.jpg", "iptv", message)
       .then((result: any) => {
         console.log("Result: ", result); //return object success
       })
       .catch((erro: any) => {
         console.error("Error when sending: ", erro); //return object error
       });
+    await timer(getRandomIntInclusive(9, 13));
   }
   // const buttons = [
   //   {

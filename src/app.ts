@@ -1,4 +1,4 @@
-import puppeteer from "./puppeteer";
+import freebitcoinMultiplay from "./free-bitcoin-multiplay";
 import freebitcoinrool from "./free-bitcoin-rool";
 
 const venom = require("venom-bot");
@@ -13,8 +13,8 @@ const result = async () => {
       multidevice: false, // for version not multidevice use false.(default: true)
     })
     .then((client: any) =>
-      //BOT FREE BITCOIN
-      // puppeteer(client)
+      //BOT FREE BITCOIN MULTIPLAY
+      // freebitcoinMultiplay(client)
 
       //BOT DENTÃO IPTV
       // botDentao(client, message.msgIptvDentao)

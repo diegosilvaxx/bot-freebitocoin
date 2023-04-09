@@ -1,16 +1,9 @@
 require("dotenv").config();
 const puppeteer = require("puppeteer");
 import bot from "./botWhatsapp";
+import multiplay_freebitcoin from "./free-bitcoin-multiplay";
 
 const PuppeteerFunction = async (client: any) => {
-  //config de ganhos maximo
-  const maxWin = 30000;
-  var winInitial = 0;
-
-  //config de prejuizos maximo
-  const stopLose = 10;
-  var stopLoseInitial = 0;
-
   //Função para gerar numeros aleatórios
   function getRandomIntInclusive(min: number, max: number) {
     min = Math.ceil(min);
@@ -24,7 +17,7 @@ const PuppeteerFunction = async (client: any) => {
     return new Promise((res) => setTimeout(res, time));
   };
 
-  const NewFuncao = async () => {
+  const MainFunction = async () => {
     try {
       const browser = await puppeteer.launch({
         headless: false,
@@ -47,30 +40,40 @@ const PuppeteerFunction = async (client: any) => {
 
       await page.click("#login_button");
 
-      console.log("chegou aqui 1");
+      console.log("Logou no Sistema");
 
       await page.waitForNavigation();
 
-      const teste = async () => {
-        const multiplay = await page.waitForSelector("#free_play_form_button");
+      const ExecuteRool = async () => {
+        const buttonRool = await page.waitForSelector("#free_play_form_button");
 
-        console.log("chegou aqui 3", multiplay);
+        await buttonRool.evaluate((b: any) => b.click());
 
-        await multiplay.evaluate((b: any) => b.click());
+        const balanceCash = await page.evaluate(
+          () => document.querySelector("#balance")?.innerHTML
+        );
 
-        await bot(client, `😎😎 Parabens você acabou de rodar a roleta 😎😎`);
+        await bot(
+          client,
+          `😎😎 Parabens você acabou de rodar a roleta 😎😎\n 🤑🤑Saldo Atual: ${balanceCash}🤑🤑`
+        );
 
-        await timer(getRandomIntInclusive(3605, 3609));
+        await multiplay_freebitcoin(client, page);
 
-        await teste();
+        console.log("Saiu da tela Multiplay");
+        await timer(getRandomIntInclusive(1198, 1205));
+        console.log("Aguardou uma hora");
+
+        await ExecuteRool();
       };
 
-      teste();
+      ExecuteRool();
     } catch (error) {
-      NewFuncao();
+      console.log("erro: ", error);
+      MainFunction();
     }
   };
-  NewFuncao();
+  MainFunction();
 };
 
 export default PuppeteerFunction;
