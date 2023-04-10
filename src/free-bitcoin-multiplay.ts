@@ -104,9 +104,8 @@ const PuppeteerFunction = async (client: any, page: any) => {
               `⚠⚠ Infelizmente você ja dobrou 10 vezes ⚠⚠ \n 🤑🤑Saldo Atual: ${balanceCash}🤑🤑`
             );
 
-            console.log("https://freebitco.in");
             await page.goto("https://freebitco.in");
-            return true;
+            return Promise.resolve();
           }
 
           console.log("passou apos return");
