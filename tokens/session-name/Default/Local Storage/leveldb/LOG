@@ -1,6 +1,0 @@
-2023/04/09-19:10:48.213 cd8 Reusing MANIFEST C:\Users\diego.borges\Documents\BotWhatsapp\tokens\session-name\Default\Local Storage\leveldb/MANIFEST-000001
-2023/04/09-19:10:48.215 cd8 Recovering log #3
-2023/04/09-19:10:48.216 cd8 Reusing old log C:\Users\diego.borges\Documents\BotWhatsapp\tokens\session-name\Default\Local Storage\leveldb/000003.log 
-2023/04/10-02:31:29.987 cd8 Level-0 table #5: started
-2023/04/10-02:31:29.999 cd8 Level-0 table #5: 19033 bytes OK
-2023/04/10-02:31:30.002 cd8 Delete type=0 #3
