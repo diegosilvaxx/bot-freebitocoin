@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 import bot from "./botWhatsapp";
 import multiplay_freebitcoin from "./free-bitcoin-multiplay";
 
-const PuppeteerFunction = async (client: any) => {
+const PuppeteerFunction = async () => {
   //Função para gerar numeros aleatórios
   function getRandomIntInclusive(min: number, max: number) {
     min = Math.ceil(min);
@@ -53,14 +53,11 @@ const PuppeteerFunction = async (client: any) => {
           () => document.querySelector("#balance")?.innerHTML
         );
 
-        await bot(
-          client,
+        console.log(
           `😎😎 Parabens você acabou de rodar a roleta 😎😎\n 🤑🤑Saldo Atual: ${balanceCash}🤑🤑`
         );
 
-        await multiplay_freebitcoin(client, page);
 
-        console.log("Saiu da tela Multiplay");
         await timer(getRandomIntInclusive(1198, 1205));
         console.log("Aguardou uma hora");
 
